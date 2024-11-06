@@ -1,8 +1,9 @@
-/* Custom styles beyond Tailwind */
+/* Custom styles */
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+/* Card hover effects */
 .news-item {
     transition: all 0.2s ease-in-out;
     border: 1px solid rgba(0, 0, 0, 0.05);
@@ -12,28 +13,6 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     border-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Gradient animations */
-.gradient-text {
-    background: linear-gradient(90deg, #3b82f6, #4f46e5);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    background-size: 200% 100%;
-    animation: gradient 8s ease infinite;
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 /* Loading animation */
@@ -57,21 +36,32 @@ body {
     }
 }
 
-/* Card hover effects */
-.card-hover {
+/* Smooth transitions */
+a {
     transition: all 0.2s ease-in-out;
 }
 
-.card-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+/* Better mobile spacing */
+@media (max-width: 640px) {
+    .grid {
+        gap: 1rem;
+    }
+    
+    section {
+        margin-bottom: 2rem;
+    }
 }
 
-/* Topic tag animations */
-.topic-tag {
-    transition: all 0.2s ease;
+/* Refresh animation */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-.topic-tag:hover {
-    transform: scale(1.05);
+.animate-spin {
+    animation: spin 1s linear infinite;
 }
