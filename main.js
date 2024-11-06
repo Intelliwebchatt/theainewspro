@@ -1,22 +1,15 @@
 // Constants
 const HACKER_NEWS_API = 'https://hacker-news.firebaseio.com/v0';
-const NEWS_FEED_ELEMENT = document.getElementById('news-feed');
-const STORIES_COUNT_ELEMENT = document.getElementById('stories-count');
-const LAST_UPDATED_ELEMENT = document.getElementById('last-updated');
+const NEWS_PREVIEW_ELEMENT = document.getElementById('news-preview');
 
-// Fetch top stories from HackerNews
+// Fetch top AI-related stories
 async function fetchTopStories() {
     try {
-        // Update last updated time safely
-        if (LAST_UPDATED_ELEMENT) {
-            LAST_UPDATED_ELEMENT.textContent = new Date().toLocaleTimeString();
-        }
-
         const response = await fetch(`${HACKER_NEWS_API}/topstories.json`);
         const storyIds = await response.json();
         
         const stories = await Promise.all(
-            storyIds.slice(0, 40).map(fetchStoryDetails)
+            storyIds.slice(0, 20).map(fetchStoryDetails)
         );
         
         const aiStories = stories.filter(story => 
@@ -24,29 +17,18 @@ async function fetchTopStories() {
                 story.title.toLowerCase().includes('ai') ||
                 story.title.toLowerCase().includes('artificial intelligence') ||
                 story.title.toLowerCase().includes('machine learning') ||
-                story.title.toLowerCase().includes('deep learning') ||
                 story.title.toLowerCase().includes('gpt') ||
                 story.title.toLowerCase().includes('openai') ||
-                story.title.toLowerCase().includes('anthropic') ||
-                story.title.toLowerCase().includes('claude')
+                story.title.toLowerCase().includes('anthropic')
             )
-        );
+        ).slice(0, 3);
         
-        // Update story count safely
-        if (STORIES_COUNT_ELEMENT) {
-            STORIES_COUNT_ELEMENT.textContent = aiStories.length;
+        if (NEWS_PREVIEW_ELEMENT) {
+            displayNewsPreview(aiStories);
         }
-
-        // Display stories if element exists
-        if (NEWS_FEED_ELEMENT) {
-            displayStories(aiStories);
-        }
-
     } catch (error) {
         console.error('Error fetching stories:', error);
-        if (NEWS_FEED_ELEMENT) {
-            displayError();
-        }
+        displayError();
     }
 }
 
@@ -61,51 +43,29 @@ async function fetchStoryDetails(id) {
     }
 }
 
-// Display stories in the news feed
-function displayStories(stories) {
+// Display news preview
+function displayNewsPreview(stories) {
     if (!stories.length) {
-        NEWS_FEED_ELEMENT.innerHTML = `
-            <div class="bg-white rounded-lg shadow-sm p-6">
-                <p class="text-gray-600">No AI-related stories found at the moment. Refreshing soon...</p>
+        NEWS_PREVIEW_ELEMENT.innerHTML = `
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-400">No AI-related stories found at the moment.</p>
             </div>
         `;
         return;
     }
 
-    NEWS_FEED_ELEMENT.innerHTML = stories.map(story => `
-        <article class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
-            <h3 class="font-semibold text-lg mb-2">
-                <a href="${story.url || `https://news.ycombinator.com/item?id=${story.id}`}" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="text-gray-900 hover:text-blue-600 transition-colors">
-                    ${story.title}
-                </a>
-            </h3>
-            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
-                <span>👆 ${story.score} points</span>
-                <span>👤 ${story.by}</span>
-                <span>🕒 ${formatTimeAgo(story.time)}</span>
-                <a href="https://news.ycombinator.com/item?id=${story.id}" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="hover:text-blue-600">
-                    💬 ${story.descendants || 0} comments
-                </a>
+    NEWS_PREVIEW_ELEMENT.innerHTML = stories.map(story => `
+        <a href="${story.url || `https://news.ycombinator.com/item?id=${story.id}`}" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="block bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors">
+            <h3 class="text-lg font-medium text-white mb-2">${story.title}</h3>
+            <div class="flex items-center gap-4 text-sm text-gray-400">
+                <span>${story.score} points</span>
+                <span>${formatTimeAgo(story.time)}</span>
             </div>
-        </article>
+        </a>
     `).join('');
-}
-
-// Display error message
-function displayError() {
-    if (NEWS_FEED_ELEMENT) {
-        NEWS_FEED_ELEMENT.innerHTML = `
-            <div class="bg-red-50 rounded-lg p-6">
-                <p class="text-red-800">Error loading news. Retrying soon...</p>
-            </div>
-        `;
-    }
 }
 
 // Format timestamp to "time ago"
