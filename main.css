@@ -9,52 +9,53 @@ a, button {
 }
 
 /* Card hover effects */
-.news-item {
-    transition: all 0.2s ease-in-out;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.news-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    border-color: rgba(0, 0, 0, 0.1);
+.group:hover .hover\:shadow-md {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 /* Hero pattern animation */
-.pattern-square {
+.backdrop-blur {
     animation: float 6s ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+}
+
+.backdrop-blur:nth-child(2) {
+    --delay: 1s;
+}
+
+.backdrop-blur:nth-child(3) {
+    --delay: 2s;
+}
+
+.backdrop-blur:nth-child(4) {
+    --delay: 3s;
 }
 
 @keyframes float {
-    0% {
+    0%, 100% {
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(-20px);
-    }
-    100% {
-        transform: translateY(0px);
+        transform: translateY(-10px);
     }
 }
 
-/* Loading animation */
-.loading-shimmer {
-    background: linear-gradient(
-        90deg,
-        rgba(229, 231, 235, 0.5) 25%,
-        rgba(229, 231, 235, 0.8) 50%,
-        rgba(229, 231, 235, 0.5) 75%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
+/* Mobile menu animations */
+@media (max-width: 768px) {
+    .nav-open {
+        display: block;
+        animation: slideDown 0.3s ease-out;
+    }
 }
 
-@keyframes shimmer {
-    0% {
-        background-position: -200% 0;
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
     }
-    100% {
-        background-position: 200% 0;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -67,4 +68,28 @@ a, button {
     section {
         margin-bottom: 2rem;
     }
+
+    .py-20 {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+}
+
+/* Focus styles */
+a:focus, button:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Accessibility improvements */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
