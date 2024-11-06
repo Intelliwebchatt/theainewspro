@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Metadata and Title -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IntelliAI Pro - Free AI News, Resources & Professional Services</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link href="main.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50 font-[Inter]">
@@ -106,7 +110,7 @@
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Blog Articles -->
-                <div class="bg-gray-800 rounded-lg p-6">
+                <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors">
                     <div class="h-12 w-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
                         <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
@@ -116,41 +120,8 @@
                     <p class="text-gray-400 mb-4">Expert insights and analysis</p>
                     <a href="/theainewspro/blog.html" class="text-blue-400 hover:text-blue-300">Read Articles →</a>
                 </div>
-<!-- Free Resources Banner -->
-    <section class="bg-gray-900 py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-white mb-4">Free AI News & Resources</h2>
-                <p class="text-xl text-gray-300">
-                    Stay informed with our always-free news feed and educational resources
-                </p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- News Feed -->
-                <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors">
-                    <div class="h-12 w-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-white mb-2">AI News Feed</h3>
-                    <p class="text-gray-400 mb-4">Latest updates and developments in AI technology</p>
-                    <a href="/theainewspro/news.html" class="text-blue-400 hover:text-blue-300">Access News →</a>
-                </div>
 
-                <!-- Blog -->
-                <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors">
-                    <div class="h-12 w-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-white mb-2">Blog Articles</h3>
-                    <p class="text-gray-400 mb-4">Expert insights and implementation guides</p>
-                    <a href="/theainewspro/blog.html" class="text-green-400 hover:text-green-300">Read Articles →</a>
-                </div>
-
-                <!-- Learning Resources -->
+                <!-- Learning Center -->
                 <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors">
                     <div class="h-12 w-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
                         <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -158,8 +129,20 @@
                         </svg>
                     </div>
                     <h3 class="text-xl font-semibold text-white mb-2">Learning Center</h3>
-                    <p class="text-gray-400 mb-4">Educational resources and tutorials</p>
+                    <p class="text-gray-400 mb-4">Educational resources and guides</p>
                     <a href="/theainewspro/learn.html" class="text-purple-400 hover:text-purple-300">Start Learning →</a>
+                </div>
+
+                <!-- AI Updates -->
+                <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-colors">
+                    <div class="h-12 w-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">AI Updates</h3>
+                    <p class="text-gray-400 mb-4">Latest trends and developments</p>
+                    <a href="/theainewspro/news.html" class="text-green-400 hover:text-green-300">View Updates →</a>
                 </div>
             </div>
         </div>
@@ -238,36 +221,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Add the standard footer here -->
-                <!-- Learning Center -->
-                <div class="bg-gray-800 rounded-lg p-6">
-                    <div class="h-12 w-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-white mb-2">Learning Center</h3>
-                    <p class="text-gray-400 mb-4">Educational resources and guides</p>
-                    <a href="/theainewspro/learn.html" class="text-purple-400 hover:text-purple-300">Start Learning →</a>
-                </div>
-
-                <!-- AI Updates -->
-                <div class="bg-gray-800 rounded-lg p-6">
-                    <div class="h-12 w-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-white mb-2">AI Updates</h3>
-                    <p class="text-gray-400 mb-4">Latest trends and developments</p>
-                    <a href="/theainewspro/news.html" class="text-green-400 hover:text-green-300">View Updates →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Preview -->
 
     <!-- Services Cards -->
     <section id="pricing" class="py-20">
@@ -392,59 +345,6 @@
             </div>
         </div>
     </section>
-    <section id="services" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-4">Professional Services</h2>
-            <p class="text-xl text-gray-600 text-center mb-12">Take your business to the next level</p>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Pro Series Card -->
-                <div class="bg-white rounded-lg shadow-sm p-6 border-t-4 border-blue-600">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold">Pro Series</h3>
-                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-                            $200
-                        </span>
-                    </div>
-                    <p class="text-gray-600 mb-4">Get started with a professional business card page and AI chatbot</p>
-                    <a href="https://intelliaipro.com" 
-                       class="block text-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                        Get Started
-                    </a>
-                </div>
-
-                <!-- Web Design -->
-                <div class="bg-white rounded-lg shadow-sm p-6 border-t-4 border-indigo-600">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold">Web Design</h3>
-                        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">
-                            Custom
-                        </span>
-                    </div>
-                    <p class="text-gray-600 mb-4">Custom website design with AI integration</p>
-                    <a href="https://intelliaimarketing.com" 
-                       class="block text-center bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
-                        Learn More
-                    </a>
-                </div>
-
-                <!-- Digital Marketing -->
-                <div class="bg-white rounded-lg shadow-sm p-6 border-t-4 border-purple-600">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold">Digital Marketing</h3>
-                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
-                            Custom
-                        </span>
-                    </div>
-                    <p class="text-gray-600 mb-4">Comprehensive digital marketing solutions</p>
-                    <a href="https://intelliaimarketing.com" 
-                       class="block text-center bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
-                        Learn More
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="bg-white border-t">
@@ -467,7 +367,7 @@
                 </div>
                 <div>
                     <h3 class="font-semibold mb-4">Services</h3>
-                    <ul class="space-y-2"></antArtifact><ul class="space-y-2">
+                    <ul class="space-y-2">
                         <li>
                             <a href="https://intelliaipro.com" 
                                class="text-blue-600 hover:text-blue-800">
@@ -499,6 +399,7 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="main.js"></script>
 </body>
 </html>
