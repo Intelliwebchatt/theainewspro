@@ -1,16 +1,17 @@
 // Constants
 const HACKER_NEWS_API = 'https://hacker-news.firebaseio.com/v0';
 const NEWS_FEED_ELEMENT = document.getElementById('news-feed');
-const FEATURED_STORIES_ELEMENT = document.getElementById('featured-stories');
 const STORIES_COUNT_ELEMENT = document.getElementById('stories-count');
 const LAST_UPDATED_ELEMENT = document.getElementById('last-updated');
 
 // Fetch top stories from HackerNews
 async function fetchTopStories() {
-    showLoadingState();
-    updateLastUpdated();
-    
     try {
+        // Update last updated time safely
+        if (LAST_UPDATED_ELEMENT) {
+            LAST_UPDATED_ELEMENT.textContent = new Date().toLocaleTimeString();
+        }
+
         const response = await fetch(`${HACKER_NEWS_API}/topstories.json`);
         const storyIds = await response.json();
         
@@ -31,17 +32,21 @@ async function fetchTopStories() {
             )
         );
         
-        STORIES_COUNT_ELEMENT.textContent = aiStories.length;
-        
-        // Split stories into featured and regular
-        const featuredStories = aiStories.slice(0, 3);
-        const regularStories = aiStories.slice(3);
-        
-        displayFeaturedStories(featuredStories);
-        displayStories(regularStories);
+        // Update story count safely
+        if (STORIES_COUNT_ELEMENT) {
+            STORIES_COUNT_ELEMENT.textContent = aiStories.length;
+        }
+
+        // Display stories if element exists
+        if (NEWS_FEED_ELEMENT) {
+            displayStories(aiStories);
+        }
+
     } catch (error) {
         console.error('Error fetching stories:', error);
-        displayError();
+        if (NEWS_FEED_ELEMENT) {
+            displayError();
+        }
     }
 }
 
@@ -56,41 +61,7 @@ async function fetchStoryDetails(id) {
     }
 }
 
-// Display featured stories
-function displayFeaturedStories(stories) {
-    if (!stories.length) return;
-
-    FEATURED_STORIES_ELEMENT.innerHTML = stories.map(story => `
-        <article class="bg-white rounded-lg shadow-sm overflow-hidden card-hover">
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Featured</span>
-                    <span class="text-sm text-gray-500">${formatTimeAgo(story.time)}</span>
-                </div>
-                <h3 class="text-xl font-semibold mb-3">
-                    <a href="${story.url || `https://news.ycombinator.com/item?id=${story.id}`}" 
-                       target="_blank" 
-                       rel="noopener noreferrer" 
-                       class="text-gray-900 hover:text-blue-600 transition-colors">
-                        ${story.title}
-                    </a>
-                </h3>
-                <div class="flex items-center gap-4 text-sm text-gray-500">
-                    <span class="flex items-center">👆 ${story.score} points</span>
-                    <span class="flex items-center">👤 ${story.by}</span>
-                    <a href="https://news.ycombinator.com/item?id=${story.id}"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="flex items-center hover:text-blue-600">
-                        💬 ${story.descendants || 0} comments
-                    </a>
-                </div>
-            </div>
-        </article>
-    `).join('');
-}
-
-// Display regular stories
+// Display stories in the news feed
 function displayStories(stories) {
     if (!stories.length) {
         NEWS_FEED_ELEMENT.innerHTML = `
@@ -102,7 +73,7 @@ function displayStories(stories) {
     }
 
     NEWS_FEED_ELEMENT.innerHTML = stories.map(story => `
-        <article class="news-item bg-white rounded-lg shadow-sm p-6 mb-4">
+        <article class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
             <h3 class="font-semibold text-lg mb-2">
                 <a href="${story.url || `https://news.ycombinator.com/item?id=${story.id}`}" 
                    target="_blank" 
@@ -112,9 +83,9 @@ function displayStories(stories) {
                 </a>
             </h3>
             <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
-                <span class="flex items-center">👆 ${story.score} points</span>
-                <span class="flex items-center">👤 ${story.by}</span>
-                <span class="flex items-center">🕒 ${formatTimeAgo(story.time)}</span>
+                <span>👆 ${story.score} points</span>
+                <span>👤 ${story.by}</span>
+                <span>🕒 ${formatTimeAgo(story.time)}</span>
                 <a href="https://news.ycombinator.com/item?id=${story.id}" 
                    target="_blank" 
                    rel="noopener noreferrer" 
@@ -124,25 +95,17 @@ function displayStories(stories) {
             </div>
         </article>
     `).join('');
-
-    // Add refresh message
-    NEWS_FEED_ELEMENT.innerHTML += `
-        <div class="text-center text-sm text-gray-500 mt-8">
-            Updates automatically every 5 minutes
-        </div>
-    `;
 }
 
-// Show loading state
-function showLoadingState() {
-    const loadingTemplate = `
-        <div class="animate-pulse bg-white rounded-lg shadow-sm p-6 mb-4">
-            <div class="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
-            <div class="h-4 bg-gray-200 rounded w-1/2"></div>
-        </div>
-    `;
-    
-    NEWS_FEED_ELEMENT.innerHTML = loadingTemplate.repeat(5);
+// Display error message
+function displayError() {
+    if (NEWS_FEED_ELEMENT) {
+        NEWS_FEED_ELEMENT.innerHTML = `
+            <div class="bg-red-50 rounded-lg p-6">
+                <p class="text-red-800">Error loading news. Retrying soon...</p>
+            </div>
+        `;
+    }
 }
 
 // Format timestamp to "time ago"
@@ -166,11 +129,6 @@ function formatTimeAgo(timestamp) {
     }
     
     return 'just now';
-}
-
-// Update last updated time
-function updateLastUpdated() {
-    LAST_UPDATED_ELEMENT.textContent = new Date().toLocaleTimeString();
 }
 
 // Initialize
