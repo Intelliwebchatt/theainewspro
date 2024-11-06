@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The AI News Pro</title>
+    <title>IntelliAI Pro News</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
@@ -14,11 +14,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-blue-600">The AI News Pro</h1>
+                    <h1 class="text-2xl font-bold">
+                        <span class="text-blue-600">Intelli</span><span class="text-indigo-600">AI</span>
+                        <span class="text-gray-700">Pro News</span>
+                    </h1>
                 </div>
-                <div class="flex gap-2">
+                <div class="flex gap-4">
                     <a href="#about" class="text-sm text-gray-600 hover:text-blue-600">About</a>
-                    <a href="https://news.ycombinator.com" target="_blank" class="text-sm text-gray-600 hover:text-blue-600">Source: HackerNews</a>
+                    <a href="https://github.com/intelliwebchatt" target="_blank" class="text-sm text-gray-600 hover:text-blue-600">GitHub</a>
                 </div>
             </div>
         </div>
@@ -34,9 +37,9 @@
                     </svg>
                 </div>
                 <div class="ml-3">
-                    <h3 class="text-sm font-medium text-blue-800">About This Site</h3>
+                    <h3 class="text-sm font-medium text-blue-800">Intelligent AI News Aggregation</h3>
                     <div class="mt-2 text-sm text-blue-700">
-                        <p>This site automatically collects and displays AI-related news from Hacker News. Stories are updated every 5 minutes. Click any story to read more or join the discussion.</p>
+                        <p>Stay informed with the latest AI developments, curated and updated every 5 minutes. Click any story to read more or join the discussion.</p>
                     </div>
                 </div>
             </div>
@@ -47,74 +50,64 @@
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-6">
                     <div>
-                        <span class="text-sm text-gray-500">Stories Found</span>
+                        <span class="text-sm text-gray-500">Active Stories</span>
                         <p class="text-2xl font-bold text-blue-600" id="stories-count">0</p>
                     </div>
                     <div>
-                        <span class="text-sm text-gray-500">Last Updated</span>
+                        <span class="text-sm text-gray-500">Last Update</span>
                         <p class="text-lg font-medium" id="last-updated">Just now</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
-                    <span class="text-sm text-gray-500">Auto-updates every 5 minutes</span>
-                    <div class="animate-spin h-4 w-4 text-blue-600" id="refresh-indicator" style="display: none;">
-                        ⟳
-                    </div>
+                    <span class="text-sm text-gray-500">Live Updates</span>
+                    <div class="animate-spin h-4 w-4 text-blue-600" id="refresh-indicator">⟳</div>
                 </div>
             </div>
         </div>
 
-        <!-- Top Stories -->
+        <!-- Featured Stories -->
         <section class="mb-12">
             <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                <span class="mr-2">🔥</span> Top AI Stories
+                <span class="mr-2">🔥</span> Trending in AI
             </h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="featured-stories">
                 <!-- Featured stories will load here -->
-                <div class="animate-pulse bg-white rounded-lg shadow-sm p-6">
-                    <div class="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
-                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
-                </div>
             </div>
         </section>
 
         <!-- Latest Stories -->
         <section>
             <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                <span class="mr-2">📰</span> Latest AI News
+                <span class="mr-2">📰</span> Latest Intelligence
             </h2>
             <div id="news-feed" class="space-y-4">
                 <!-- News items will load here -->
-                <div class="animate-pulse bg-white rounded-lg shadow-sm p-6">
-                    <div class="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
-                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
-                </div>
             </div>
         </section>
 
         <!-- Quick Guide -->
         <section class="mt-12 bg-gray-50 border border-gray-200 rounded-lg p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Guide</h3>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Navigation Guide</h3>
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="flex items-start">
-                    <span class="text-2xl mr-3">👆</span>
+                    <span class="text-2xl mr-3">🎯</span>
                     <div>
-                        <p class="font-medium">Points</p>
-                        <p class="text-sm text-gray-600">Shows how many upvotes the story has received</p>
+                        <p class="font-medium">Relevance Score</p>
+                        <p class="text-sm text-gray-600">Higher points indicate more community interest</p>
                     </div>
                 </div>
                 <div class="flex items-start">
                     <span class="text-2xl mr-3">💬</span>
                     <div>
-                        <p class="font-medium">Comments</p>
-                        <p class="text-sm text-gray-600">Click to join the discussion on Hacker News</p>
+                        <p class="font-medium">Discussion</p>
+                        <p class="text-sm text-gray-600">Click to join the community conversation</p>
                     </div>
                 </div>
                 <div class="flex items-start">
-                    <span class="text-2xl mr-3">🕒</span>
+                    <span class="text-2xl mr-3">⚡</span>
                     <div>
-                        <p class="font-medium">Time</p>
-                        <p class="text-sm text-gray-600">Shows how long ago the story was posted</p>
+                        <p class="font-medium">Live Updates</p>
+                        <p class="text-sm text-gray-600">Fresh content every 5 minutes</p>
                     </div>
                 </div>
             </div>
@@ -124,8 +117,9 @@
     <footer class="bg-white border-t mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <p class="text-center text-gray-500 text-sm">
-                The AI News Pro aggregates AI-related news from Hacker News. 
-                Not affiliated with Y Combinator or Hacker News.
+                IntelliAI Pro News - Intelligent AI news aggregation.
+                <a href="#" class="text-blue-600 hover:underline">Terms</a> ·
+                <a href="#" class="text-blue-600 hover:underline">Privacy</a>
             </p>
         </div>
     </footer>
