@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI News - IntelliAI Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-[Inter]">
+    <!-- Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-2xl font-bold">
+                        <span class="text-blue-600">Intelli</span><span class="text-indigo-600">AI</span>
+                        <span class="text-gray-700">Pro</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="/news" class="text-blue-600 border-b-2 border-blue-600">AI News</a>
+                    <a href="/blog" class="text-gray-600 hover:text-blue-600">Pro Blog</a>
+                    <a href="/concepts" class="text-gray-600 hover:text-blue-600">AI Concepts</a>
+                    <a href="https://intelliaipro.com" 
+                       class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        Pro Series Access
+                    </a>
+                    <a href="https://intelliaimarketing.com"
+                       class="text-blue-600 hover:text-blue-800 font-medium"
+                       target="_blank">
+                        Digital Marketing
+                    </a>
+                </nav>
+                <button class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- News Header -->
+    <div class="bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <h1 class="text-3xl font-bold text-gray-900">Latest AI News</h1>
+            <p class="mt-2 text-gray-600">Stay updated with the latest developments in artificial intelligence</p>
+        </div>
+    </div>
+
+    <!-- News Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Main News Feed -->
+            <div class="lg:col-span-2">
+                <div id="news-feed" class="space-y-6">
+                    <!-- News items will be loaded here -->
+                    <div class="animate-pulse">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <div class="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
+                            <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-6">
+                <!-- Stats Card -->
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h2 class="text-lg font-semibold mb-4">Overview</h2>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Stories Found</span>
+                            <span class="font-semibold text-blue-600" id="stories-count">0</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Last Updated</span>
+                            <span class="text-gray-900" id="last-updated">Just now</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topics Card -->
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h2 class="text-lg font-semibold mb-4">Popular Topics</h2>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Machine Learning</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm">ChatGPT</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm">Neural Networks</span>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm">Deep Learning</span>
+                    </div>
+                </div>
+
+                <!-- Pro Series Promo -->
+                <div class="bg-gradient-to-br from-blue-600 to-indigo-700 p-6 rounded-lg text-white">
+                    <h2 class="text-lg font-semibold mb-2">Want More?</h2>
+                    <p class="text-blue-100 mb-4">Get access to our Pro Series for advanced AI insights and personalized assistance.</p>
+                    <a href="https://intelliaipro.com" 
+                       class="block text-center bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <p class="text-center text-gray-500 text-sm">
+                © 2024 IntelliAI Pro. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
